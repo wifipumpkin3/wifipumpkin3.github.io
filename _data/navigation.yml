@@ -1,0 +1,8 @@
+- title: News
+  url: news
+- title: Documentation
+  url: "docs/getting-started"
+- title: About
+  url: about
+- title: Donate
+  url: donate

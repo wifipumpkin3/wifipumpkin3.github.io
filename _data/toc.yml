@@ -1,0 +1,41 @@
+- title: Documentation
+  url: ""
+  links:
+    - title: "Getting Started"
+      url: "docs/getting-started"
+      children:
+        - title: Installation
+          url: "docs/getting-started#installation"
+        - title: Usage
+          url: "docs/getting-started#usage"
+        - title: Plugins
+          url: "docs/getting-started#plugins"
+        - title: Proxys
+          url: "docs/getting-started#proxys"
+        - title: Modules
+          url: "docs/getting-started#modules"
+        - title: Development
+          url: "docs/getting-started#development"
+    - title: "Configuration"
+      url: "docs/configuration"
+      children:
+        - title: Configuration file
+          url: "docs/configuration/configuration-file"
+        - title: Logger
+          url: "docs/configuration/log-file"
+    - title: "API Reference"
+      children:
+        - title: "Documentation"
+          url: "docs/api-doc"
+        - title: "Api development"
+          url: "docs/api-dev"
+    - title: "FAQ"
+      children:
+        - title: "Installation"
+          url: "docs/faqs/installation"
+        - title: "Application"
+          url: "docs/faqs/application"
+    - title: "About"
+      url: "about"
+    - title: "News"
+      url: "news"
