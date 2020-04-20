@@ -59,6 +59,13 @@ font [Nitin Gurbani
 
 if you've **python 3.7 or later** installed on your machine, it very simple to install the **Wp3**. Follow the steps:
 
+#### Debian/Ubuntu
+
+It is highly recommended install somes system packages, os-level dependencies.
+``` sh
+sudo apt install python3.7-dev libssl-dev libffi-dev build-essential python3.7
+```
+
 ```sh
  $ git clone https://github.com/P0cL4bs/wifipumpkin3.git
  $ cd wifipumpkin3
