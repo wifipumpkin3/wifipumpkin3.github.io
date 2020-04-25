@@ -77,6 +77,42 @@ or grab a Debian `*.deb` package from GitHub [Releases](https://github.com/P0cL4
 $ sudo dpkg -i wifipumpkin3-1.0.0-all.deb 
 ```
 
+#### Install on Kali Linux 
+
+the Kali Linux by default has installed **python3.8** is compartible with `wp3`, I recommend to install somes system packages, os-level dependencies.
+
+``` sh
+ $ sudo apt install libssl-dev libffi-dev build-essential
+ $ git clone https://github.com/P0cL4bs/wifipumpkin3.git
+ $ cd wifipumpkin3
+```
+
+now, we need to install the `PyQt5`, it very easy:
+
+``` sh
+sudo apt install python3-pyqt5
+```
+
+probably the version that will be installed is `PyQt5==5.14.2`, but you can check which version was installed:
+``` bash
+pip3 freeze | grep PyQt5
+```
+
+now, the output command above like `PyQt5==5.14.2`, will be changed in file  `requirements.txt` on root directory. after that, run:
+
+```sh
+ $ sudo python3 setup.py install
+```
+if you see this message bellow, everything ok ! 
+
+> Finished processing dependencies for wifipumpkin3==1.0.0
+
+now, let's execute the app:
+``` 
+# wifipumpkin3
+```
+all done, will be see the CLI of `wp3`.
+
 ##### Installation python virtualenv
 
 Virtualenv is a tool used to create an isolated Python environment. Virtualenv is the easiest and recommended way to configure a custom Python environment. 
