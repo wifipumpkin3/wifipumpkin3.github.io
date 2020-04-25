@@ -561,7 +561,7 @@ if want to create multiple language that allow the user to pick a different one,
 In plugin ExamplePlugin.py change the bool var **ConfigParser** to True and override function **init_language**. look;
 
 ``` python
-
+# file => ExamplePlugin.py
 from wifipumpkin3.plugins.captivePortal.plugin import CaptiveTemplatePlugin
 import wifipumpkin3.core.utility.constants as C # import plugin class base
 
@@ -622,7 +622,7 @@ ExamplePlugin/
 
 9 directories, 13 files
 ```
-now, you need to include inside **settings.ini** the keys.
+now, you need to include inside **captive-portal.ini** the keys.
 ``` ini
 [plugins]
 FlaskDemo=false
@@ -641,15 +641,35 @@ En=false
 PtBr=false
 
 ```
+#### Include File .py
 
-now only need to edit when you want to send me a pull request, if you do somes test, you want to edit this file bellow.
+after configure the file ExamplePlugin.py, you need to move from the directory **captivePortal** in root wifipumpkin3 folder **/wifipumpkin3/plugins/captivePortal**
+as you can see on screenshot bellow:
+
+![captivefolder](../assets/img/captiveportal_folder.png)
+
+with file **ExamplePlugin.py** into captivePortal directory, you need to reinstall the tool, you have  to reinstall on version  the python installed, let's go:
+
+``` bash
+# for python3.7
+$ sudo python3.7 setup.py install
+# for python3.8
+$ sudo python3.8 setup.py install
+```
+if you running on Kali linux and followed the guide how to install above, only need to:
+``` bash
+python3 setup.py install
+```
 
 #### Include the Templates
 
 now, it very simples copy the folder **ExamplePlugin** to path **.config/wifipumpkin3/config/templates/**, the plugin will be listed and working fine for capture the credentails.
 
 #### Enjoy 
-have fun!
+
+now, you can choose to keep your custom version for yourself or send it to all wp3 users.
+
+have fun! Hack the Planet
 
 #### pumpkinproxy
 
