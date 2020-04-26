@@ -935,16 +935,18 @@ Okay, now that we know how the proxy plugin works, let's understand its peculiar
 
 
 - All plugins must extend the class `ProxyMode`
-- The `__init__` method of the` MitmMode` class needs to be called in some way for the base functions of the class to be defined.
+- The `__init__` method of the `ProxyMode` class needs to be called in some way for the base functions of the class to be defined.
 - All plugins must be located in the folder `core/servers/proxy`.
 - The plugins are automatically loaded by the application when read in the folder mentioned above, in addition, even if not linked to the config.ini file, they are listed by the application.
-- Some methods defined by default of the `MitmMode` class, have an execution rule when starting the AP and all these methods can be overridden by the parent class.
-´´´ python
+- Some methods defined by default of the `ProxyMode` class, have an execution rule when starting the AP and all these methods can be overridden by the parent class.
+
+``` python
     def Start(self):
         self.Active.Initialize()
         self.Active.Serve()
         self.Active.boot()
 ```
+
 Now that we know how the initialization of the methods of the `ProxyMode` class works, let's implement a simple plugin based on the information above.
 
 ``` python
