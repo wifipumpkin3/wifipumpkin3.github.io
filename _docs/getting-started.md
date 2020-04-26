@@ -98,7 +98,12 @@ probably the version that will be installed is `PyQt5==5.14.2`, but you can chec
 pip3 freeze | grep PyQt5
 ```
 
-now, the output command above like `PyQt5==5.14.2`, will be changed in file  `requirements.txt` on root directory. after that, run:
+or check if the pyqt5 is installed successful:
+``` python
+python3 -c "from PyQt5.QtCore import QSettings; print('done')"
+```
+
+now, if you got the message `done`, nice. the next step is install the `wp3`:
 
 ```sh
  $ sudo python3 setup.py install
@@ -109,7 +114,7 @@ if you see this message bellow, everything ok !
 
 now, let's execute the app:
 ``` 
-# wifipumpkin3
+$ sudo  wifipumpkin3
 ```
 all done, will be see the CLI of `wp3`.
 
@@ -833,3 +838,186 @@ class beef(BasePumpkin):
 ```
 
 You can easily implement a module to inject data into pages creating a python file in directory "plugins/extension/" and run `make setup` that on next start the prompt, the plugin is there.
+
+
+
+
+### Developing Plugin MITM Attack
+
+Okay, here things will get a little more complicated, the plugins for mitm attack are designed to run in parallel with the AP (Access Point), to be more specific are sniffers that monitor an interface like tcpdump -i eth0. This means that any tool that does this kind of manipulation can be created as a plugin and submitted for analysis by the developers.
+
+We will develop a plugin that runs tcpdump in parallel as an example, but first we’ll understand how each structure works, thanks to Wahyudin Aziz @yudevan.
+
+- All plugins must extend the class `MitmMode`
+- The `__init__` method of the` MitmMode` class needs to be called in some way for the base functions of the class to be defined.
+- All plugins must be located in the folder `core/servers/mitm`.
+- The plugins are automatically loaded by the application when read in the folder mentioned above, in addition, even if not linked to the config.ini file, they are listed by the application.
+- Some methods defined by default of the `MitmMode` class, have an execution rule when starting the AP and all these methods can be overridden by the parent class.
+
+``` python
+    def Start(self):
+        self.Initialize()
+        self.boot()
+```
+
+Now that we know how to initialize the methods of the `MitmMode` class, let's implement a simple plugin based on the information above.
+
+``` python
+from wifipumpkin3.core.servers.mitm.mitmmode import MitmMode
+from wifipumpkin3.core.controls.threads import ProcessThread
+import wifipumpkin3.core.utility.constants as C
+```
+
+In this plugin called Tcpdump we will need to run a process in the background where the tcpdump tool will run, so the wp3 framework contains a class called `ProcessThread` that runs a process in the background and redirects the command output to the` _ProcessOutput` object.
+
+``` python
+class Tcpdump(MitmMode):
+    Name = "Tcpdump"
+    ID = "tcpdump"
+    Author = "PumpkinDev"
+    Description = "Tcpdump is a tool used to monitor packets trafficked on a computer network."
+    LogFile = C.LOG_TCPDUMP
+    ConfigMitmPath = None
+    _cmd_array = []
+    ModSettings = True
+    ModType = "server"
+    config = None
+
+    def __init__(self, parent, FSettingsUI=None, main_method=None, **kwargs):
+        super(Tcpdump, self).__init__(parent)
+        self.setID(self.ID)
+        self.setModType(self.ModType)
+
+    @property
+    def CMD_ARRAY(self):
+        """ list of paraments the tool """
+        iface = self.conf.get("accesspoint", "interface")
+        self._cmd_array = ["-i", iface]
+        return self._cmd_array
+
+    def boot(self):
+        if self.CMD_ARRAY:
+            self.reactor = ProcessThread({"tcpdump": self.CMD_ARRAY})
+            self.reactor._ProcssOutput.connect(self.LogOutput)
+            self.reactor.setObjectName(self.ID)
+```
+
+The `Tcpdump` class has some important attributes such as Name, ID, ModType and LogFile, they are necessary for the plugin to work properly.
+
+#### Method boot
+
+The very important attribute that is only defined when the boot is called `self.reactor`, with it we can simplify our process, all in the background, that is, you only need to define it in the boot method to guarantee a good operation. Note, whenever the `stop` command is used to disable the AP,` self.reactor.stop() `is called to end the background process.
+
+#### LogFile Tcpdump
+
+The LogFile attribute is responsible for informing the plugin where the output of the executed command will be saved, in this way, you need to add in the file `core / utility / constants.py` which will be the name of the .log file.
+
+``` python
+LOG_TCPDUMP = user_config_dir + "/.config/wifipumpkin3/logs/ap/tcpdump.log"
+```
+
+#### Extra attributes and methods
+
+The Name, ID and ModType attributes are defined as follows:
+- Name - name of plugin 
+- ID - ID do plugin (lower() format )
+- ModType -  server type
+
+O método `self.LogOutput` não precisa ser subrescrito caso você use uma ferramenta externa para executar, isso porque geralmente os logs já estaram formado pela ferramenta. mas caso você queria sobrescrever ele não tem uma regra específica para eles, basta apenas salvar no final usar o `self.logger.info(data)` para salvar os dados no arquivo LOG_TCPDUMP.
+
+The `self.LogOutput` method does not need to be overwritten if you use an external tool to run it, because the logs are usually already formed by the tool. but if you wanted to overwrite it, it doesn't have a specific rule for them, just save at the end use `self.logger.info(data)` to save the data in the LOG_TCPDUMP file.
+
+### Developing Plugin Proxy
+
+To develop one you need a little more than a plugin, because unlike a plugin, proxies have their own rules and will literally run between the communication between the client and the server, this type of proxy is called a transparent proxy. Detail, if your plugin is not necessarily a proxy (it is in the middle of the communication) but at some point it executes an iptables rule, we automatically call it a proxy, because it is handling traffic anyway.
+
+Okay, now that we know how the proxy plugin works, let's understand its peculiarities.
+
+
+- All plugins must extend the class `ProxyMode`
+- The `__init__` method of the` MitmMode` class needs to be called in some way for the base functions of the class to be defined.
+- All plugins must be located in the folder `core/servers/proxy`.
+- The plugins are automatically loaded by the application when read in the folder mentioned above, in addition, even if not linked to the config.ini file, they are listed by the application.
+- Some methods defined by default of the `MitmMode` class, have an execution rule when starting the AP and all these methods can be overridden by the parent class.
+´´´ python
+    def Start(self):
+        self.Active.Initialize()
+        self.Active.Serve()
+        self.Active.boot()
+```
+Now that we know how the initialization of the methods of the `ProxyMode` class works, let's implement a simple plugin based on the information above.
+
+``` python
+from wifipumpkin3.core.servers.proxy.proxymode import ProxyMode
+import wifipumpkin3.core.utility.constants as C
+from wifipumpkin3.core.controls.threads import ProcessThread
+```
+
+In this plugin called Mitmdump we will need to run in the background a process where the tool [mitmdump](https://mitmproxy.org/) will run , so the wp3 framework contains a class called `ProcessThread` that runs a process in the background and redirects the output of the command for the `_ProcessOutput` object.
+
+``` python
+class Mitmdump(ProxyMode):
+    Name = "Mitmdump"
+    Author = "Pumpkin-Dev"
+    ID = "mitmdump"
+    Description = "Transparent proxies with mitmproxy"
+    Hidden = False
+    LogFile = C.LOG_MITMDUMP
+    CONFIGINI_PATH = C.CONFIG_PP_INI
+    _cmd_array = []
+    RunningPort = 8080
+    ModType = "proxy"
+    TypePlugin = 1
+
+    def __init__(self, parent=None, **kwargs):
+        super(Mitmdump, self).__init__(parent)
+        self.setID(self.ID)
+        self.parent = parent
+        self.setTypePlugin(self.TypePlugin)
+
+    def Initialize(self):
+        self.add_default_rules(
+            "iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port {}".format(
+                self.getRunningPort()
+            )
+        )
+        self.runDefaultRules()
+
+    @property
+    def CMD_ARRAY(self):
+        self._cmd_array = ["-p", self.getRunningPort(), 
+        '--ssl-insecure', '--set' ,'upstream_cert=false','-k']
+        return self._cmd_array
+
+    def boot(self):
+        self.reactor = ProcessThread({"mitmdump": self.CMD_ARRAY})
+        self.reactor._ProcssOutput.connect(self.LogOutput)
+        self.reactor.setObjectName(self.ID)
+```
+
+The `Mitmdump` class has some important attributes like Name, ID, ModType and LogFile, they are necessary for the plugin to work properly. An important method here is `add_default_rules`, this method allows you to add an iptables rule that will be executed when` Initialize` is called.
+
+### Method Initialize
+
+The Initialize method initiates some pre-defined configuration by the proxy, a simple example is the `runDefaultRules` method that iterates over a list of iptables rules.
+
+#### Method boot
+
+The very important attribute that is only defined when the boot is called `self.reactor`, with it we can simplify our process, all in the background, that is, you only need to define it in the boot method to guarantee a good operation. Note, whenever the `stop` command is used to disable the AP,` self.reactor.stop() `is called to end the background process.
+
+#### LogFile Mitmdump
+
+The LogFile attribute is responsible for informing the plugin where the output of the executed command will be saved, in this way, you need to add in the file `core / utility / constants.py` which will be the name of the .log file.
+
+´´´ python
+LOG_MITMDUMP = user_config_dir + "/.config/wifipumpkin3/logs/ap/mitduump.log"
+´´´
+
+#### Extra attributes and methods
+
+The Name, ID and ModType attributes are defined as follows:
+- Name - name of plugin 
+- ID - ID do plugin (lower() format )
+- ModType - just type proxy
+
+The `self.LogOutput` method does not need to be overwritten if you use an external tool to run it, because the logs are usually already formed by the tool. but if you wanted to overwrite it, there is no specific rule for them, just save it at the end using `self.logger.info(data)` to save the data in the LOG_MITMDUMP file.
