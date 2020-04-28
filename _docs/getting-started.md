@@ -93,11 +93,6 @@ now, we need to install the `PyQt5`, it very easy:
 sudo apt install python3-pyqt5
 ```
 
-probably the version that will be installed is `PyQt5==5.14.2`, but you can check which version was installed:
-``` bash
-pip3 freeze | grep PyQt5
-```
-
 or check if the pyqt5 is installed successful:
 ``` python
 python3 -c "from PyQt5.QtCore import QSettings; print('done')"
