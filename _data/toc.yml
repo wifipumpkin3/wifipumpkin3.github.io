@@ -39,3 +39,5 @@
       url: "about"
     - title: "News"
       url: "news"
+    - title: "Demo"
+      url: "demo"
