@@ -452,7 +452,7 @@ Example configuration files for creating a simple template.
 
 ``` python
 # file => ExamplePlugin.py
-from wifipumpkin3.plugins.captivePortal.plugin import CaptiveTemplatePlugin
+from wifipumpkin3.plugins.captiveflask.plugin import CaptiveTemplatePlugin
 import wifipumpkin3.core.utility.constants as C # import plugin class base
 
 class ExamplePlugin(CaptiveTemplatePlugin):
@@ -562,7 +562,7 @@ In plugin ExamplePlugin.py change the bool var **ConfigParser** to True and over
 
 ``` python
 # file => ExamplePlugin.py
-from wifipumpkin3.plugins.captivePortal.plugin import CaptiveTemplatePlugin
+from wifipumpkin3.plugins.captiveflask.plugin import CaptiveTemplatePlugin
 import wifipumpkin3.core.utility.constants as C # import plugin class base
 
 
@@ -643,7 +643,7 @@ PtBr=false
 ```
 #### Include File .py
 
-after configure the file ExamplePlugin.py, you need to move from the directory **captivePortal** in root wifipumpkin3 folder **/wifipumpkin3/plugins/captivePortal**
+after configure the file ExamplePlugin.py, you need to move from the directory **captivePortal** in root wifipumpkin3 folder **/wifipumpkin3/plugins/captiveflask**
 as you can see on screenshot bellow:
 
 ![captivefolder](../assets/img/captiveportal_folder.png)
