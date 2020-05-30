@@ -10,15 +10,14 @@ This is a starter Wifipumpkin3 - Powerful framework for Rogue Wi-Fi Access Point
 
 ```
 → sudo wifipumpkin3 -i wlp1s0
-
   _      ___ _____     ___                  __    _      ____
  | | /| / (_) __(_)___/ _ \__ ____ _  ___  / /__ (_)__  |_  /
  | |/ |/ / / _// /___/ ___/ // /  ' \/ _ \/  '_// / _ \_/_ < 
  |__/|__/_/_/ /_/   /_/   \_,_/_/_/_/ .__/_/\_\/_/_//_/____/ 
                                    /_/                       
-                                            codename: nidavellir
-Made by: @mh4x0f - P0cL4bs Team | 1.0.0 dev
-[*] Session id: 81a4f0cc-7ba5-11ea-84fd-94e979fa917b 
+                                            codename: AKUANDUBA
+by: @mh4x0f - P0cL4bs Team | version: 1.0.5 
+[*] Session id: 894790f4-a21b-11ea-8c91-da1b0d2e5dd4 
 Starting prompt...
 wp3 > 
 ```
@@ -30,7 +29,9 @@ wp3 >
 
 - Rogue access point attack
 - Man-in-the-middle attack
-- Rouge **Dns Server**
+- Deuath accesspoint attack
+- extra-captiveflask templates
+- Rogue **Dns Server**
 - Captive portal attack (captiveflask)
 - **Intercept**, inspect, modify and replay **web traffic**
 - **WiFi** networks scanning
