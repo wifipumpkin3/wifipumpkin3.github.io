@@ -437,6 +437,11 @@ Modules developers and users are welcome to include your module into this projec
 #### captiveflask
 Developing extra captive portals for captiveflask plugins
 
+#### extra-captiveflask repository
+the wp3 now have an extra-captiveflask templates for community send all your customs captiveflask templates. this is awesome, because all users can do download and use your custom template. checkout the docs bellow:
+
+[template  extra-captiveflask](https://github.com/mh4x0f/extra-captiveflask)
+
 ### description 
 the plugin captiveflask allow the Attacker mount a wireless access point which is used in conjuction with a web server and iptables traffic capturing rules to create the phishing portal. Users can freely connect to these networks without a password and will often be directed to a login page where a password is required before being allowed to browse the web.   
 
