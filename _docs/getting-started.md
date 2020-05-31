@@ -343,6 +343,14 @@ search  modules by name, this will be implemented in the future when milion od m
 
 select module for modules, full inspiration in metasploit modules.
 
+> `dump`
+
+dump informations from client connected on AP.
+
+> `update`
+
+pulling updates from remote git repository.
+
 
 ### Examples
 
@@ -923,8 +931,6 @@ The Name, ID and ModType attributes are defined as follows:
 - ID - ID do plugin (lower() format )
 - ModType -  server type
 
-O método `self.LogOutput` não precisa ser subrescrito caso você use uma ferramenta externa para executar, isso porque geralmente os logs já estaram formado pela ferramenta. mas caso você queria sobrescrever ele não tem uma regra específica para eles, basta apenas salvar no final usar o `self.logger.info(data)` para salvar os dados no arquivo LOG_TCPDUMP.
-
 The `self.LogOutput` method does not need to be overwritten if you use an external tool to run it, because the logs are usually already formed by the tool. but if you wanted to overwrite it, it doesn't have a specific rule for them, just save at the end use `self.logger.info(data)` to save the data in the LOG_TCPDUMP file.
 
 ### Developing Plugin Proxy
@@ -1011,9 +1017,9 @@ The very important attribute that is only defined when the boot is called `self.
 
 The LogFile attribute is responsible for informing the plugin where the output of the executed command will be saved, in this way, you need to add in the file `core / utility / constants.py` which will be the name of the .log file.
 
-´´´ python
+``` python
 LOG_MITMDUMP = user_config_dir + "/.config/wifipumpkin3/logs/ap/mitduump.log"
-´´´
+```
 
 #### Extra attributes and methods
 
