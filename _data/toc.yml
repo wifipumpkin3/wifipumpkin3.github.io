@@ -10,8 +10,8 @@
           url: "docs/getting-started#usage"
         - title: Plugins
           url: "docs/getting-started#plugins"
-        - title: Proxys
-          url: "docs/getting-started#proxys"
+        - title: Proxies
+          url: "docs/getting-started#proxies"
         - title: Modules
           url: "docs/getting-started#modules"
         - title: Development

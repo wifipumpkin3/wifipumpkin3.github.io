@@ -325,9 +325,9 @@ show all wireless mode available.
 
 show all plugins available and their status.
 
-> `proxys`
+> `proxies`
 
-show all proxys available and their status.
+show all proxies available and their status.
 
 
 > `show`
@@ -773,7 +773,7 @@ class js_inject(BasePumpkin):
 
     def handleResponse(self, request, data):
 
-        html = BeautifulSoup(data, "lxml")
+        html = BeautifulSoup(data, "html.parser")
         """
         # To Allow CORS
         if "Content-Security-Policy" in flow.response.headers:
@@ -827,7 +827,7 @@ class beef(BasePumpkin):
 
     def handleResponse(self, request, data):
 
-        html = BeautifulSoup(data, "lxml")
+        html = BeautifulSoup(data, "html.parser")
         """
         # To Allow CORS
         if "Content-Security-Policy" in flow.response.headers:
@@ -872,7 +872,7 @@ Now that we know how to initialize the methods of the `MitmMode` class, let's im
 
 ``` python
 from wifipumpkin3.core.servers.mitm.mitmmode import MitmMode
-from wifipumpkin3.core.controls.threads import ProcessThread
+from wifipumpkin3.core.common.threads import ProcessThread
 import wifipumpkin3.core.utility.constants as C
 ```
 
@@ -958,7 +958,7 @@ Now that we know how the initialization of the methods of the `ProxyMode` class 
 ``` python
 from wifipumpkin3.core.servers.proxy.proxymode import ProxyMode
 import wifipumpkin3.core.utility.constants as C
-from wifipumpkin3.core.controls.threads import ProcessThread
+from wifipumpkin3.core.common.threads import ProcessThread
 ```
 
 In this plugin called Mitmdump we will need to run in the background a process where the tool [mitmdump](https://mitmproxy.org/) will run , so the wp3 framework contains a class called `ProcessThread` that runs a process in the background and redirects the output of the command for the `_ProcessOutput` object.
