@@ -173,6 +173,29 @@ $ sudo docker run --privileged -ti --rm --name wifipumpkin3 --net host "wifipump
 
 all done, will be see the CLI of `wp3` on docker with mode docker activated. ;)
 
+##### Installation on Docker-compose
+
+Using the docker-compose.yml you can install the `w p3`. follow the steps,  
+to build the image just run.
+
+``` bash
+$ docker-compose build wifipumpkin3
+```
+
+To run a container
+
+``` bash
+$ sudo docker-compose run wifipumpkin3 wifipumpkin3
+```
+
+To run a container with a pulp file
+
+``` sh
+$ sudo docker-compose run wifipumpkin3 wifipumpkin3 --pulp scripts/demo.pulp
+```
+all done, will be see the CLI of `wp3` on docker with mode docker activated. 
+thank's [@rafonsecad](https://github.com/rafonsecad)
+
 
 ### About wireless adapters
 Your wireless adapter and your kernel driver must support AP mode. In order to check this, execute this shell command:
