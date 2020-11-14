@@ -16,7 +16,7 @@ This is a starter Wifipumpkin3 - Powerful framework for Rogue Wi-Fi Access Point
  |__/|__/_/_/ /_/   /_/   \_,_/_/_/_/ .__/_/\_\/_/_//_/____/ 
                                    /_/                       
                                             codename: AKUANDUBA
-by: @mh4x0f - P0cL4bs Team | version: 1.0.5 
+by: @mh4x0f - P0cL4bs Team | version: 1.0.8 
 [*] Session id: 894790f4-a21b-11ea-8c91-da1b0d2e5dd4 
 Starting prompt...
 wp3 > 
