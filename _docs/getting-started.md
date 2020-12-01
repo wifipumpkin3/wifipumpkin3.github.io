@@ -79,7 +79,7 @@ $ sudo dpkg -i wifipumpkin3-1.0.0-all.deb
 
 #### Install on Kali Linux 
 
-the Kali Linux by default has installed **python3.8** is compartible with `wp3`, I recommend to install somes system packages, os-level dependencies.
+the Kali Linux by default has installed **python3.8** is compartible with `wp3`, I recommend to install some system packages, os-level dependencies.
 
 ``` sh
  $ sudo apt install libssl-dev libffi-dev build-essential
