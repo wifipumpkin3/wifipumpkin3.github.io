@@ -10,16 +10,16 @@ This is a starter Wifipumpkin3 - Powerful framework for Rogue Wi-Fi Access Point
 
 ```
 → sudo wifipumpkin3 -i wlp1s0
+
   _      ___ _____     ___                  __    _      ____
  | | /| / (_) __(_)___/ _ \__ ____ _  ___  / /__ (_)__  |_  /
- | |/ |/ / / _// /___/ ___/ // /  ' \/ _ \/  '_// / _ \_/_ < 
- |__/|__/_/_/ /_/   /_/   \_,_/_/_/_/ .__/_/\_\/_/_//_/____/ 
-                                   /_/                       
-                                            codename: AKUANDUBA
-by: @mh4x0f - P0cL4bs Team | version: 1.0.8 
-[*] Session id: 894790f4-a21b-11ea-8c91-da1b0d2e5dd4 
-Starting prompt...
-wp3 > 
+ | |/ |/ / / _// /___/ ___/ // /  ' \/ _ \/  '_// / _ \_/_ <
+ |__/|__/_/_/ /_/   /_/   \_,_/_/_/_/ .__/_/\_\/_/_//_/____/
+                                   /_/
+                                            codename: Yorixiriamori
+by: @mh4x0f - P0cL4bs Team | version: 1.1.2 dev
+[*] Session id: 69477394-96fe-11ec-8d65-31774793e3e0
+wp3 >
 ```
 
 ## Overview
@@ -29,8 +29,8 @@ wp3 >
 
 - Rogue access point attack
 - Man-in-the-middle attack
-- Deuath accesspoint attack
-- extra-captiveflask templates
+- Module for deauthentication attack
+- Module for extra-captiveflask templates 
 - Rogue **Dns Server**
 - Captive portal attack (captiveflask)
 - **Intercept**, inspect, modify and replay **web traffic**
@@ -39,6 +39,7 @@ wp3 >
 - Credentials harvesting
 - Transparent Proxies
 - LLMNR, NBT-NS and MDNS poisoner ([Responder3](https://github.com/skelsec/Responder3)) 
+- RestFulAPI (new) 
 - and **more**!
 
 ### Donation

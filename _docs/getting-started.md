@@ -316,6 +316,10 @@ show all variable and status for settings AP. You can see (`bssid`, `ssid`, `cha
 
 set variable proxy,plugin and access point, this command set is like metasploit `set` command.
 
+> `unset`
+
+unset variable commnd hostapd_config
+
 > `start`
 
 start access point (AP), if not something wrong the will be see a new AP with hostapd program. also the proxy,plugin should be initialized.
@@ -370,7 +374,15 @@ select module for modules, full inspiration in metasploit modules.
 
 dump informations from client connected on AP.
 
-> `update`
+> `dhcpconf`
+
+show/choise dhcp server configuration
+
+> `dhcpmode`
+
+show/set all available dhcp server.
+
+> `update` (deprecated)
 
 pulling updates from remote git repository.
 
@@ -506,7 +518,7 @@ class ExamplePlugin(CaptiveTemplatePlugin):
         for key,value in self.meta.items():
             self.__dict__[key] = value
         self.dict_domain = {}
-        self.ConfigParser = Flase 
+        self.ConfigParser = False 
 ```
 
 #### File architecture

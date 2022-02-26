@@ -244,31 +244,6 @@ Returns json data about all infromation from the DHCP server
         }
     `
 
-## Clients information
-
-Returns json data about all clients connected the AP
-
-- URL
-    `/clients`
-- Method:
-    `GET`
-- Header Params:
-    x-access-token=`TOKEN jwt`
-- Success Response:
-    - code: 200
-    - Body :
-    `
-    {
-    "clients": [
-        {
-        "HOSTNAME": "DEVICE NAME",
-        "IP": "IP ADDRESS",
-        "MAC": "MAC ADDRESS",
-        "VENDOR": "VENDOR OF MAC"
-        }
-    ]
-    }
-    `
 
 ## Log information
 
