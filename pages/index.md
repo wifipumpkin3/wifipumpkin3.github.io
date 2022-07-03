@@ -17,7 +17,7 @@ This is a starter Wifipumpkin3 - Powerful framework for Rogue Wi-Fi Access Point
  |__/|__/_/_/ /_/   /_/   \_,_/_/_/_/ .__/_/\_\/_/_//_/____/
                                    /_/
                                             codename: Yorixiriamori
-by: @mh4x0f - P0cL4bs Team | version: 1.1.2 dev
+by: @mh4x0f - P0cL4bs Team | version: 1.1.3 main
 [*] Session id: 69477394-96fe-11ec-8d65-31774793e3e0
 wp3 >
 ```
@@ -38,7 +38,6 @@ wp3 >
 - **DNS** monitoring service
 - Credentials harvesting
 - Transparent Proxies
-- LLMNR, NBT-NS and MDNS poisoner ([Responder3](https://github.com/skelsec/Responder3)) 
 - RestFulAPI (new) 
 - and **more**!
 
