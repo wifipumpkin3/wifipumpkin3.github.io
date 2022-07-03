@@ -77,11 +77,12 @@ The next step for build a template like a boss is changes all files that make re
 <link rel="stylesheet" href="./app.css">
 ```
 
+
 replaced to:
 
-``` css
+{::nomarkdown}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-```
+{:/nomarkdown}
 
 The line 10:
 
@@ -91,9 +92,9 @@ The line 10:
 
 replaced to:
 
-``` css
+{::nomarkdown}
 <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
-```
+{:/nomarkdown}
 
 This change will reference the files for templace find on your plugin static diretory and you need to apply this for all reference of image or .css or .js file that have on project that you want to port to wp3.
 
