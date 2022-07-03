@@ -80,9 +80,9 @@ The next step for build a template like a boss is changes all files that make re
 
 replaced to:
 
-<pre>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
-</pre>
+``` css
+<link rel="stylesheet" href="{{ "{{ url_for('static', filename='css/app.css') " }}}}">
+```
 
 The line 10:
 
@@ -92,9 +92,9 @@ The line 10:
 
 replaced to:
 
-<pre>
-<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
-</pre>
+``` css
+<link rel="shortcut icon" href="{{ "{{ url_for('static', filename='images/favicon.png') " }}}}" type="image/png">
+```
 
 This change will reference the files for templace find on your plugin static diretory and you need to apply this for all reference of image or .css or .js file that have on project that you want to port to wp3.
 
