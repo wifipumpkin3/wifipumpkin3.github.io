@@ -512,21 +512,13 @@ from wifipumpkin3.plugins.captiveflask.plugin import CaptiveTemplatePlugin
 import wifipumpkin3.core.utility.constants as C # import plugin class base
 
 class ExamplePlugin(CaptiveTemplatePlugin):
-    meta = {
-        'Name'      : 'ExamplePlugin',
-        'Version'   : '1.0',
-        'Description' : 'Example is a simple portal default page',
-        'Author'    : ' the Author',
-        'TemplatePath' : C.TEMPLATES_FLASK +'templates/ExamplePlugin',
-        'StaticPath' : C.TEMPLATES_FLASK + 'templates/ExamplePlugin/static',
-        'Preview' : 'plugins/captivePortal/templates/ExamplePlugin/preview.png'
-    }
-
-    def __init__(self):
-        for key,value in self.meta.items():
-            self.__dict__[key] = value
-        self.dict_domain = {}
-        self.ConfigParser = False 
+    Name = "ExamplePlugin"
+    Version = "1.0"
+    Description = "Example is a simple portal default page"
+    Author = "mh4x0f"
+    TemplatePath = C.TEMPLATES_FLASK + "templates/example"
+    StaticPath = C.TEMPLATES_FLASK + "templates/example/static"
+    Preview = C.TEMPLATES_FLASK + "templates/example/preview.png"
 ```
 
 #### File architecture
@@ -598,23 +590,9 @@ Set Up the Phishing your custom page login successful
 </html>
 ```
 
-now, you need to include inside **.config/wifipumpkin3/config/app/captive-portal.ini** the key *ExamplePlugin=false* in tag plugins.
-``` ini
-[plugins]
-FlaskDemo=false
-Login_v4=false
-loginPage=false
-DarkLogin=true
- # new key with my new plugin
-ExamplePlugin=false 
-
-```
-
-
 ### Add language into the guest portal
 
 if want to create multiple language that allow the user to pick a different one, checkout!
-In plugin ExamplePlugin.py change the bool var **ConfigParser** to True and override function **init_language**. look;
 
 ``` python
 # file => ExamplePlugin.py
@@ -623,44 +601,21 @@ import wifipumpkin3.core.utility.constants as C # import plugin class base
 
 
 class ExamplePlugin(CaptiveTemplatePlugin):
-    meta = {
-        'Name'      : 'ExamplePlugin',
-        'Version'   : '1.0',
-        'Description' : 'Example is a simple portal default page',
-        'Author'    : 'The Author',
-        'TemplatePath' : C.TEMPLATES_FLASK +'templates/ExamplePlugin',
-        'StaticPath' : C.TEMPLATES_FLASK +'templates/ExamplePlugin/static',
-        'Preview' : 'plugins/captivePortal/templates/ExamplePlugin/preview.png'
-    }
-
-    def __init__(self):
-        for key,value in self.meta.items():
-            self.__dict__[key] = value
-        self.dict_domain = {}
-        self.ConfigParser = True
-
-    def init_language(self, lang):
-        if (lang):
-          if (lang.lower() != 'default'):
-              self.TemplatePath = C.TEMPLATES_FLASK +'templates/ExamplePlugin/language/{}'.format(lang)
-              return
-          for key,value in self.meta.items():
-              self.__dict__[key] = value
+    Name = "ExamplePlugin"
+    Version = "1.0"
+    Description = "Example is a simple portal default page"
+    Author = "mh4x0f"
+    TemplatePath = C.TEMPLATES_FLASK + "templates/example"
+    StaticPath = C.TEMPLATES_FLASK + "templates/example/static"
+    Preview = C.TEMPLATES_FLASK + "templates/example/preview.png"
+    Languages = ["En", "ptBr"] # the En is default 
 
 ```
 
 #### File architecture
+
 ``` bash
 ExamplePlugin/
-├── language
-│   ├── En
-│   │   └── templates
-│   │       ├── login.html
-│   │       └── login_successful.html
-│   └── ptBr
-│       └── templates
-│           ├── login.html
-│           └── login_successful.html
 ├── preview.png
 ├── static
 │   ├── css
@@ -673,53 +628,68 @@ ExamplePlugin/
 │       ├── jquery-1.11.1.min.js
 │       └── main.js
 └── templates
-    ├── login.html
-    └── login_successful.html
+│   ├── En
+│   │   └── templates
+│   │       ├── login.html
+│   │       └── login_successful.html
+│   └── ptBr
+│       └── templates
+│           ├── login.html
+│           └── login_successful.html
 
 9 directories, 13 files
 ```
-now, you need to include inside **captive-portal.ini** the keys.
-``` ini
-[plugins]
-FlaskDemo=false
-Login_v4=false
-loginPage=false
-DarkLogin=true
-ExamplePlugin=false
 
-# new section
-[set_ExamplePlugin]  
-# default language
-Default=true
-# english language
-En=false
- #huer huer br
-PtBr=false
+#### Install the template
+
+
+Great, After that we need to build a file `.zip` with file `instagram.py` and folder `instagram`. Exist two way or more to build a .zip file with this files:
+
+1 - create using the command `zip` on terminal
+2 - use the manager file that have a option for build .zip file `compress` options.
+
+#### Using the terminal
+
+Open the terminal in my case on `git` folder and type the command bellow:
 
 ```
-#### Include File .py
-
-after configure the file ExamplePlugin.py, you need to move from the directory **captivePortal** in root wifipumpkin3 folder **/wifipumpkin3/plugins/captiveflask**
-as you can see on screenshot bellow:
-
-![captivefolder](../assets/img/captiveportal_folder.png)
-
-with file **ExamplePlugin.py** into captivePortal directory, you need to reinstall the tool, you have  to reinstall on version  the python installed, let's go:
-
-``` bash
-# for python3.7
-$ sudo python3.7 setup.py install
-# for python3.8
-$ sudo python3.8 setup.py install
-```
-if you running on Kali linux and followed the guide how to install above, only need to:
-``` bash
-python3 setup.py install
+zip -r instagram.zip instagram instagram.py
 ```
 
-#### Include the Templates
+![captive00](/assets/img/posts/captiveflask/10.png)
 
-now, it very simples copy the folder **ExamplePlugin** to path **.config/wifipumpkin3/config/templates/**, the plugin will be listed and working fine for capture the credentails.
+
+### Using the File Manager 
+
+Open the folder that have tow files and select and click with button right and `compress` selct the `.zip` and done.
+
+Result is:
+
+![captive00](/assets/img/posts/captiveflask/11.png)
+
+
+### Install on wifipumpkin3 1.1.3
+
+In the last version of the wp3 we have a new plugin called `custom_captiveflask` this plugin have only one option `install`. checkout:
+
+![captive00](/assets/img/posts/captiveflask/15.png)
+
+
+OBS: check the current directory is `/git` becasue the file `instagram.zip` is there.
+
+
+![captive00](/assets/img/posts/captiveflask/16.png)
+
+
+How to use the plugin: the first params is `plugin_name` and second is the `file.zip`.
+
+![captive00](/assets/img/posts/captiveflask/17.png)
+
+
+Restart the wp3 and checkout the new plugin instaled and working fine.
+
+![captive00](/assets/img/posts/captiveflask/18.png)
+
 
 #### Enjoy 
 
