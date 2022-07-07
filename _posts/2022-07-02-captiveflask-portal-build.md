@@ -156,6 +156,12 @@ The most important changes should be done is add the form tag html for the wp3 f
 </form>
 ```
 
+## Add message login_sucessful.html
+
+The login_successful is very simple, i put on my github gist the complete code for this page.  
+
+![login_sucessful](https://gist.github.com/mh4x0f/1b43fea5bf1265540d447e776f14ae07)
+
 after the apply this changes you got this:
 
 ![captive00](/assets/img/posts/captiveflask/13.png)
@@ -233,4 +239,16 @@ Restart the wp3 and checkout the new plugin instaled and working fine.
 
 ![captive00](/assets/img/posts/captiveflask/18.png)
 
-I'll pull a video bellow the test it. Hack the Planet.
+I'll pull a video bellow the test it. Hack the Planet. check the demo bellow:
+
+## Extra options 
+
+For load the  login_successful.html is opened when the vitim type the password you need to enable a option `force_redirect_sucessful_template` is settings come from `false` by default you can set this option using the CLI command checkout:
+
+```
+wp3 > set captiveflask.force_redirect_sucessful_template true
+```
+
+if you can see this option on cli command use the command `info captiveflask`.
+
+![demo instagram](https://www.youtube.com/watch?v=JCiV__I4TEw)
