@@ -252,3 +252,7 @@ wp3 > set captiveflask.force_redirect_sucessful_template true
 if you can see this option on cli command use the command `info captiveflask`.
 
 ![demo instagram](https://www.youtube.com/watch?v=JCiV__I4TEw)
+
+
+
+[![Instagem demo](https://img.youtube.com/vi/JCiV__I4TEw/0.jpg)](https://www.youtube.com/watch?v=JCiV__I4TEw)
