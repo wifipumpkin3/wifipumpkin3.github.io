@@ -77,6 +77,14 @@ or grab a Debian `*.deb` package from GitHub [Releases](https://github.com/P0cL4
 $ sudo dpkg -i wifipumpkin3-1.0.0-all.deb 
 ```
 
+#### Install on Kali Linux ( 2022.2 ) 
+
+wp3 can be install from `apt` command.
+
+``` sh 
+$ sudo apt install wifipumpkin3
+```
+
 #### Install on Kali Linux 
 
 the Kali Linux by default has installed **python3.8** is compartible with `wp3`, I recommend to install some system packages, os-level dependencies.
