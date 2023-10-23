@@ -109,7 +109,7 @@ python3 -c "from PyQt5.QtCore import QSettings; print('done')"
 now, if you got the message `done`, nice. the next step is install the `wp3`:
 
 ```sh
- $ sudo python3 setup.py install
+ $ sudo python3 -m pip install .
 ```
 if you see this message bellow, everything ok ! 
 
