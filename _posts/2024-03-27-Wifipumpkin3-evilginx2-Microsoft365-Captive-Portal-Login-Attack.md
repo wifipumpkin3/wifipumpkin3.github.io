@@ -22,6 +22,9 @@ When I saw evilginx2 starting to do reason 2, I realized that I could just add s
 
 ![RR](/assets/img/posts/phishkin3/phishkin3_diagram.png)
 
+
+<!--more-->
+
 The representation above shows the initial sketch of what would be the new proxy called phishkin3. As we can see, the new proxy would be responsible for creating a connection between the external host and the victim who connects to the WiFi. However, for this attack to be successful, the external host must also do its part so that after the procedures, the user is actually validated and allowed to connect to the internet after logging in.
 
 Let's better understand all these processes:
