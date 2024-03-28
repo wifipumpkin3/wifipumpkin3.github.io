@@ -1,6 +1,6 @@
 ---
 title: "Wifipumpkin3 + evilginx2 - Microsoft365 Captive Portal Login Attack"
-date: 2024-27-03 10:30:21 -0500
+date: 2024-03-27 5:00:21 -0500
 categories: phishkin3
 badges:
  - type: post
