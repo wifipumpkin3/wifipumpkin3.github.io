@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Wifipumpkin3 - CLI
-permalink: /
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # Welcome to Wifipumpkin3

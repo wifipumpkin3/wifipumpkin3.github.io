@@ -1,6 +1,6 @@
 ---
-title: News
-permalink: /news/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # News

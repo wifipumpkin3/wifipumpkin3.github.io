@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Wifipumpkin3 - Demo
-permalink: /demo/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # Wifipumpkin3 live demo 

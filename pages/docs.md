@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Documentation
-permalink: /docs/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # Documentation

@@ -1,7 +1,6 @@
 ---
-layout: page
-title: Articles
-permalink: /archive/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 # News Archive
 

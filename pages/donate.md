@@ -1,6 +1,6 @@
 ---
-title: Donate
-permalink: /donate/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # Donate

@@ -1,6 +1,6 @@
 ---
-title: About
-permalink: /about/
+redirect:   https://docs.wifipumpkin3.com/
+layout:     redirect
 ---
 
 # About
